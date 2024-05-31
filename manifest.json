@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Recipe Alternatives",
+  "version": "1.0",
+  "description": "Provides alternatives for ingredients for recipes.",
+  "icons": {
+    "48": "icons/sowm.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["alternatives.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["alternatives-bg.js"]
+  },
+  "permissions": ["menus", "activeTab"]
+}
