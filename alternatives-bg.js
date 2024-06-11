@@ -7,7 +7,23 @@ browser.menus.create({
 browser.menus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
     case "log-selection":
-      console.log("Looking up alternatives for: " + info.selectionText);
+      handleSelection(info);
       break;
   }
 });
+
+function handleSelection(info) {
+  console.log("Looking up alternatives for: " + info.selectionText);
+
+  /*
+  const selection = document.getSelection();
+  console.log(selection);
+
+  const range = selection.getRangeAt(0);
+  const clientRects = range.getClientRects();
+
+  console.log(clientRects);
+  */
+
+  browser.runtime.sendMessage({ payload: "clicked" });
+}
