@@ -24,6 +24,20 @@ function handleSelection(info) {
 
   console.log(clientRects);
   */
-
-  browser.runtime.sendMessage({ payload: "clicked" });
+  browser.tabs
+    .query({
+      currentWindow: true,
+      active: true,
+    })
+    .then((tabs) => {
+      const tab = tabs[0];
+      return browser.tabs.sendMessage(tab.id, { payload: "clicked" });
+    })
+    .then((response) => {
+      console.log("Message from the content script:");
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log("error:", err);
+    });
 }
