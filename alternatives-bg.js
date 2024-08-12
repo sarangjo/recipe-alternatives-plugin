@@ -24,6 +24,7 @@ function handleSelection(info) {
 
   console.log(clientRects);
   */
+  // Find the active tab to send the content script
   browser.tabs
     .query({
       currentWindow: true,
@@ -31,7 +32,7 @@ function handleSelection(info) {
     })
     .then((tabs) => {
       const tab = tabs[0];
-      return browser.tabs.sendMessage(tab.id, { payload: "clicked" });
+      return browser.tabs.sendMessage(tab.id, { payload: info.selectionText });
     })
     .then((response) => {
       console.log("Message from the content script:");

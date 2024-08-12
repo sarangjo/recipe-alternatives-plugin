@@ -4,6 +4,8 @@ function receiver(message) {
   console.log("received msg");
   console.log(message);
 
+  console.log(document.getSelection());
+
   return true;
 }
 
