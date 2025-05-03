@@ -9,11 +9,12 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["alternatives.js"]
+      "js": ["alternatives.js"],
+      "css": ["overlay.css"]
     }
   ],
   "background": {
     "scripts": ["alternatives-bg.js"]
   },
-  "permissions": ["menus", "activeTab"]
+  "permissions": ["menus", "activeTab", "https://router.huggingface.co/"]
 }
